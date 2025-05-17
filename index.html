@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Votación MUT! 10 anys</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="header-wrapper">
+  <div class="parallax-bg"></div>
+  <div class="header-gradient"></div>
+  <header class="header-content">
+    <div id="user-info"></div>
+    <h1>Festival MUT! 10 anys</h1>
+    <p>Vota els teus 10 espectacles preferits</p>
+    <div id="language-switcher">
+      <button data-lang="va" class="lang-btn active">Valencià</button>
+      <button data-lang="es" class="lang-btn">Castellano</button>
+    </div>
+  </header>
+</div>
+
+  <main id="card-container">
+    <!-- Aquí se insertarán las tarjetas -->
+  </main>
+
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Inicia sessió per votar</h2>
+      <form id="login-form">
+        <label for="login-email">Email:</label><br>
+        <input type="email" id="login-email" required><br><br>
+        <button type="submit">Enviar enllaç</button>
+      </form>
+      <p id="login-message"></p>
+      <button type="button" id="login-cancel">Cancelar</button>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <button id="modal-close">✕</button>
+    <div id="modal-video"></div>
+    <h2 id="modal-title"></h2>
+    <h3 id="modal-company"></h3>
+    <p id="modal-year"></p>
+    <p id="modal-synopsis"></p>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

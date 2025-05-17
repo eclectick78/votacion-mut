@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Votación MUT!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { padding: 20px; color: #eee; background-color: #181818; font-family: sans-serif;}
+        #admin-content { display: none; } /* Hidden by default */
+        #access-denied { color: red; font-weight: bold; }
+        #login-prompt-admin p { margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 30px;}
+        th, td { border: 1px solid #555; padding: 10px; text-align: left; }
+        th { background-color: #333; font-weight: bold; }
+        #user-info-admin { margin-bottom: 20px; font-size: 0.9em; }
+        #logout-btn-admin { background: #e9391e; color: white; border:none; padding: 8px 12px; border-radius: 4px; cursor:pointer; font-size: 0.9em; }
+        #logout-btn-admin:hover { background: #c73018; }
+        h1, h2 { color: #fff; }
+        a { color: #405cf5; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <h1>Panel de Administración - Votos</h1>
+
+    <div id="user-info-admin"></div>
+
+    <div id="login-prompt-admin" class="hidden">
+        <p>Debes iniciar sesión como administrador para ver esta página.</p>
+        <p>Si ya has iniciado sesión en la página principal y eres administrador, esta página debería cargarse. Si no, <a href="index.html">vuelve a la página principal para iniciar sesión.</a></p>
+    </div>
+
+    <div id="access-denied" class="hidden">
+        Acceso denegado. No tienes permisos para ver esta página.
+    </div>
+
+    <div id="admin-content">
+        <h2>Resumen de Votos por Espectáculo</h2>
+        <p>Total de votos individuales registrados: <span id="total-individual-votes">0</span></p> <!-- Cambiado el ID para claridad -->
+        <div id="summary-votes-table-container">
+            <table id="summary-votes-table">
+                <thead>
+                    <tr>
+                        <th>Espectáculo</th>
+                        <th>Total Votos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de resumen se insertarán aquí -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECCIÓN DE TABLA DETALLADA ELIMINADA -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
