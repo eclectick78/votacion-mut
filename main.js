@@ -6,7 +6,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname.startsWith('127.');
 const redirectTo = isLocalhost
   ? 'http://localhost:5500'
-  : 'https://eclectick78.github.io/votacion-mut';
+  : 'https://eclectick78.github.io/votacion-mut/';
 
 console.log("Antes de crear cliente Supabase. window.supabase es:", window.supabase);
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
