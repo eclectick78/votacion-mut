@@ -43,7 +43,7 @@ function renderCards(data, currentUser, votosInicialesDelUsuario) { // currentUs
     }
 
     card.innerHTML = `
-      <img src="${espectaculo.thumbnail}" alt="${espectaculo.titulo}" loading="lazy" />
+      <img data-src="${espectaculo.thumbnail}" alt="${espectaculo.titulo}" class="lazy-img" />
       <div class="card-content">
         <h3>${espectaculo.titulo}</h3>
         <p>${espectaculo.compania}</p>
@@ -175,12 +175,30 @@ function renderCards(data, currentUser, votosInicialesDelUsuario) { // currentUs
     }
     container.appendChild(card);
   });
+
+  // Lazy loading de imágenes con IntersectionObserver
+  const lazyImages = document.querySelectorAll('img.lazy-img');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        img.classList.remove('lazy-img');
+        obs.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px 100px 0px',
+    threshold: 0.1
+  });
+
+  lazyImages.forEach(img => observer.observe(img));
 }
 
 // ... (resto del document.addEventListener('DOMContentLoaded') y onAuthStateChange)
-// Asegúrate de que onAuthStateChange pase los votos correctos a renderCards:
 // ej. renderCards(data, user, votosDelUsuarioObtenidosDeLaDB || []);
-// Y que la variable 'user' global esté correctamente actualizada por onAuthStateChange.
 
 document.addEventListener('DOMContentLoaded', () => {
   const h1 = document.querySelector('header h1');
@@ -194,8 +212,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function traducirCabecera() { /* ... sin cambios ... */ }
-  function traducirLoginModal() { /* ... sin cambios ... */ }
+  function traducirCabecera() {
+    const h1 = document.querySelector('header h1');
+    const p = document.querySelector('header p');
+    if (currentLang === 'es') {
+      h1.textContent = 'Festival MUT! 10 años';
+      p.textContent = 'Vota tus 10 espectáculos preferidos';
+    } else {
+      h1.textContent = 'Festival MUT! 10 anys';
+      p.textContent = 'Vota els teus 10 espectacles preferits';
+    }
+  }
+  function traducirLoginModal() {
+    const loginTitle = document.querySelector('#login-modal h2');
+    const loginLabel = document.querySelector('#login-form label[for="login-email"]');
+    const loginButton = document.querySelector('#login-form button[type="submit"]');
+    const cancelButton = document.getElementById('login-cancel');
+
+    if (currentLang === 'es') {
+      loginTitle.textContent = 'Inicia sesión para votar';
+      loginLabel.textContent = 'Correo electrónico:';
+      loginButton.textContent = 'Enviar enlace';
+      cancelButton.textContent = 'Cancelar';
+    } else {
+      loginTitle.textContent = 'Inicia sessió per votar';
+      loginLabel.textContent = 'Email:';
+      loginButton.textContent = 'Enviar enllaç';
+      cancelButton.textContent = 'Cancelar';
+    }
+  }
 
   traducirCabecera();
   traducirLoginModal();
@@ -310,8 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // client.auth.getSession().then(...) // Es buena idea tener esto para el estado inicial
-  // ... (como en versiones más nuevas que te pasé, para cargar el usuario al inicio)
-
 
   client.auth.onAuthStateChange(async (event, session) => {
     console.log("--- onAuthStateChange TRIGGERED --- Event:", event, "Session:", session ? session.user.email : "null");
