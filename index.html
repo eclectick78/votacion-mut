@@ -5,24 +5,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Votación MUT! 10 anys</title>
+  <!-- Meta descripció per a SEO -->
+  <meta name="description"
+    content="Celebra amb nosaltres els 10 anys del Festival MUT! Vota els teus 10 espectacles preferits entre totes les edicions anteriors." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <!-- Open Graph per a xarxes socials -->
+  <meta property="og:title" content="Festival MUT! - Votació 10 anys" />
+  <meta property="og:description"
+    content="Vota els teus 10 espectacles preferits i celebra amb nosaltres els 10 anys d’arts escèniques internacionals." />
+  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta property="og:url" content="votacion-mut/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Festival MUT! - Votació 10 anys" />
+  <meta name="twitter:description" content="Vota els teus 10 espectacles preferits de totes les edicions del MUT!" />
+  <meta name="twitter:image" content="assets/og-image.jpg" />
+  
+  <!-- Estilos CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
   <div class="header-wrapper">
-  <div class="parallax-bg"></div>
-  <div class="header-gradient"></div>
-  <header class="header-content">
-    <div id="user-info"></div>
-    <h1>Festival MUT! 10 anys</h1>
-    <p>Vota els teus 10 espectacles preferits</p>
-    <div id="language-switcher">
-      <button data-lang="va" class="lang-btn active">Valencià</button>
-      <button data-lang="es" class="lang-btn">Castellano</button>
-    </div>
-  </header>
-</div>
+    <div class="parallax-bg"></div>
+    <div class="header-gradient"></div>
+    <header class="header-content">
+      <div id="user-info"></div>
+      <h1>Festival MUT! 10 anys</h1>
+      <p>Vota els teus 10 espectacles preferits</p>
+      <div id="language-switcher">
+        <button data-lang="va" class="lang-btn active">Valencià</button>
+        <button data-lang="es" class="lang-btn">Castellano</button>
+      </div>
+    </header>
+  </div>
 
   <main id="card-container">
     <!-- Aquí se insertarán las tarjetas -->
@@ -42,15 +64,15 @@
   </div>
 
   <div id="modal" class="modal hidden">
-  <div class="modal-content">
-    <button id="modal-close">✕</button>
-    <div id="modal-video"></div>
-    <h2 id="modal-title"></h2>
-    <h3 id="modal-company"></h3>
-    <p id="modal-year"></p>
-    <p id="modal-synopsis"></p>
+    <div class="modal-content">
+      <button id="modal-close">✕</button>
+      <div id="modal-video"></div>
+      <h2 id="modal-title"></h2>
+      <h3 id="modal-company"></h3>
+      <p id="modal-year"></p>
+      <p id="modal-synopsis"></p>
+    </div>
   </div>
-</div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="main.js"></script>
 </body>

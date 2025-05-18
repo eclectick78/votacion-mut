@@ -3,6 +3,11 @@
 const SUPABASE_URL = 'https://fzxxnyeqeymabouuwhnt.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6eHhueWVxZXltYWJvdXV3aG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczOTcxMDcsImV4cCI6MjA2Mjk3MzEwN30.AcqmES6E_PJL5KNDcDHRq4ONyu2RWvgbeMkCPqcC2yk';
 
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname.startsWith('127.');
+const redirectTo = isLocalhost
+  ? 'http://localhost:5500'
+  : 'https://eclectick78.github.io/votacion-mut';
+
 console.log("Antes de crear cliente Supabase. window.supabase es:", window.supabase);
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 console.log("Cliente Supabase creado:", client);
@@ -283,7 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.textContent = '';
 
       const email = emailInput.value;
-      const { error } = await client.auth.signInWithOtp({ email });
+      const { error } = await client.auth.signInWithOtp({
+        email,
+        options: {
+          redirectTo: redirectTo
+        }
+      });
 
       if (error) {
         msg.textContent = currentLang === 'es' ? 'Error al enviar el correo. Inténtalo de nuevo.' : 'Error en enviar el correu. Torna-ho a intentar.';
