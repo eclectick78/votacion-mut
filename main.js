@@ -288,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.textContent = '';
 
       const email = emailInput.value;
+      console.log("VALOR EXACTO DE redirectTo ENVIADO A SUPABASE:", redirectTo);
       const { error } = await client.auth.signInWithOtp({
         email,
         options: {
