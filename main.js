@@ -1,5 +1,11 @@
 // --- main.js (VERSIÓN ANTIGUA MODIFICADA) ---
 
+// Validación de formato de email
+function esEmailValido(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
 const SUPABASE_URL = 'https://fzxxnyeqeymabouuwhnt.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6eHhueWVxZXltYWJvdXV3aG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczOTcxMDcsImV4cCI6MjA2Mjk3MzEwN30.AcqmES6E_PJL5KNDcDHRq4ONyu2RWvgbeMkCPqcC2yk';
 
@@ -297,6 +303,18 @@ document.addEventListener('DOMContentLoaded', () => {
       msg.textContent = '';
 
       const email = emailInput.value;
+
+      // Validación de formato de email antes de enviar magic link
+      if (!esEmailValido(email)) {
+        msg.textContent = currentLang === 'es'
+          ? 'El correo no tiene un formato válido.'
+          : 'El correu no té un format vàlid.';
+        isSubmittingLogin = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLoginBtnText;
+        return;
+      }
+
       console.log("VALOR EXACTO DE redirectTo ENVIADO A SUPABASE:", redirectTo);
       const { error } = await client.auth.signInWithOtp({
         email,
