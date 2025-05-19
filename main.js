@@ -17,10 +17,22 @@ let espectaculos = []; // Variable global para los espectáculos
 let currentLang = localStorage.getItem('lang') || 'va';
 let votosGlobalesDelUsuario = []; // CAMBIO: Renombrar para claridad y usar esta globalmente
 
-function getYouTubeId(url) {
-  if (!url) return '';
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([\w-]{11})/);
-  return match ? match[1] : '';
+function getVideoEmbedHTML(url) {
+  if (!url) return '<p>Vídeo no disponible.</p>';
+
+  // YouTube
+  const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([\w-]{11})/);
+  if (ytMatch) {
+    return `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}" frameborder="0" allowfullscreen></iframe>`;
+  }
+
+  // Vimeo
+  const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vimeoMatch) {
+    return `<iframe src="https://player.vimeo.com/video/${vimeoMatch[1]}" frameborder="0" allowfullscreen></iframe>`;
+  }
+
+  return '<p>Vídeo no disponible.</p>';
 }
 
 function renderCards(data, currentUser, votosInicialesDelUsuario) { // currentUser es el usuario logueado
@@ -74,10 +86,7 @@ function renderCards(data, currentUser, votosInicialesDelUsuario) { // currentUs
           return;
         }
 
-        const videoId = getYouTubeId(espectaculo.video);
-        modalVideo.innerHTML = videoId
-          ? `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`
-          : '<p>Vídeo no disponible.</p>';
+        modalVideo.innerHTML = getVideoEmbedHTML(espectaculo.video);
 
         modalTitle.textContent = espectaculo.titulo;
         modalCompany.textContent = espectaculo.compania;
