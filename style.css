@@ -4,9 +4,15 @@ body {
   background: #181818;
 }
 
+h1 {
+    color:#ffffff;
+    font-size: calc(18px + 1.5vw);
+    margin: 0 0 5px 0;
+}
+
 .header-wrapper {
   position: relative;
-  height: 460px;
+  height: calc(140px + 24vw);
   overflow: hidden;
 }
 
@@ -16,7 +22,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('assets/header-bg.webp');
+  background-image: url('assets/header-bg2.webp');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -28,7 +34,7 @@ body {
   left: 0;
   width: 100%;
   height: 50%;
-  background: linear-gradient(to bottom, rgba(24, 24, 24, 0) 0%, #181818 100%);
+  background: linear-gradient(to bottom, rgba(24, 24, 24, 0) 60%, #181818 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -107,7 +113,6 @@ button:hover {
   background: #555;
 }
 
-/* CSS */
 .card-button {
   appearance: button;
   backface-visibility: hidden;
