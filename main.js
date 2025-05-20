@@ -100,6 +100,54 @@ function renderCards(data, currentUser, votosInicialesDelUsuario) { // currentUs
         modalSynopsis.textContent =
           currentLang === 'es' ? espectaculo.sinopsis_es : espectaculo.sinopsis_val;
 
+        // --- Añadir controles de navegación en la modal ---
+        const modalControls = document.getElementById('modal-controls');
+        if (modalControls) {
+          modalControls.innerHTML = '';
+
+          const currentIndex = espectaculos.findIndex(e => e.titulo === espectaculo.titulo);
+
+          const btnAnterior = document.createElement('button');
+          btnAnterior.textContent = currentLang === 'es' ? 'Anterior' : 'Anterior';
+          btnAnterior.classList.add('modal-nav-btn');
+          btnAnterior.addEventListener('click', () => {
+            const prevIndex = (currentIndex - 1 + espectaculos.length) % espectaculos.length;
+            const anteriorEspectaculo = espectaculos[prevIndex];
+            // Simular click en ficha del anterior espectáculo
+            // Buscar la card correspondiente y disparar su botón ficha
+            const cards = document.querySelectorAll('.card');
+            for (const c of cards) {
+              const h3 = c.querySelector('h3');
+              if (h3 && h3.textContent === anteriorEspectaculo.titulo) {
+                const fichaBtn = c.querySelector('.ficha');
+                if (fichaBtn) fichaBtn.click();
+                break;
+              }
+            }
+          });
+
+          const btnSiguiente = document.createElement('button');
+          btnSiguiente.textContent = currentLang === 'es' ? 'Siguiente' : 'Següent';
+          btnSiguiente.classList.add('modal-nav-btn');
+          btnSiguiente.addEventListener('click', () => {
+            const nextIndex = (currentIndex + 1) % espectaculos.length;
+            const siguienteEspectaculo = espectaculos[nextIndex];
+            // Simular click en ficha del siguiente espectáculo
+            const cards = document.querySelectorAll('.card');
+            for (const c of cards) {
+              const h3 = c.querySelector('h3');
+              if (h3 && h3.textContent === siguienteEspectaculo.titulo) {
+                const fichaBtn = c.querySelector('.ficha');
+                if (fichaBtn) fichaBtn.click();
+                break;
+              }
+            }
+          });
+
+          modalControls.appendChild(btnAnterior);
+          modalControls.appendChild(btnSiguiente);
+        }
+
         modal.classList.remove('hidden');
       });
     }

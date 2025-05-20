@@ -194,6 +194,27 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.modal-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.modal-nav-btn {
+  background: none;
+  border: 1px solid #999;
+  padding: 0.5rem 1rem;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-nav-btn:hover {
+  background: #999;
+  color: #181818;
+}
+
 #language-switcher {
   margin-top: 1rem;
 }
