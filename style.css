@@ -277,8 +277,10 @@ button:hover {
 
 @media (max-width: 600px) {
   #card-container {
-    grid-template-columns: 1fr;
-    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .card {
@@ -288,10 +290,7 @@ button:hover {
 
   .modal-content {
     width: 95%;
-    padding: 1.5rem 1rem;
-  }
-
-  .card-button {
-    width: 100%;
+    padding: 2.5rem 1rem;
+    max-width: 700px;
   }
 }
