@@ -53,7 +53,7 @@ h1 {
 
 #card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 1rem;
   padding: 1rem;
 }
@@ -169,7 +169,7 @@ button:hover {
 
 .modal-content {
   background: white;
-  max-width: 700px;
+  max-width: 820px;
   width: 90%;
   padding: 2rem;
   border-radius: 8px;
@@ -178,8 +178,8 @@ button:hover {
 
 #modal-close {
   position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
+  top: 0;
+  right: 0;
   background: transparent;
   color: #000000;
   font-size: 1.5rem;
