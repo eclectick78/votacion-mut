@@ -273,6 +273,60 @@ button:hover {
   cursor: pointer;
 }
 
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #181818;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.site-footer a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.form-legal-text {
+  font-size: 0.75rem;
+  color: #777777;
+  text-align: left;
+  margin-top: 1rem;
+  line-height: 1.4;
+  max-width: 580px;
+}
+
+.form-legal-text a {
+  color: #3058dc;
+  text-decoration: underline;
+}
+
+/* Legal pages styles */
+.legal-content {
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 2rem;
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: #1e1e1e;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.legal-content h1,
+.legal-content h2 {
+  color: #fff;
+}
+
+.legal-content p {
+  margin-bottom: 1rem;
+}
+
 /* Responsive styles for small screens */ 
 
 @media (max-width: 600px) {

@@ -310,8 +310,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Nueva función para traducir el aviso legal
+  function traducirAvisoLegal() {
+    const legalText = document.getElementById('login-legal-text');
+    if (!legalText) return;
+
+    if (currentLang === 'es') {
+      legalText.innerHTML = 'Al participar aceptas el tratamiento de tus datos personales con la única finalidad de gestionar tu voto en el Festival MUT!. Más información en nuestra <a href="privacidad.html" target="_blank">Política de privacidad</a>.';
+    } else {
+      legalText.innerHTML = 'En participar acceptes el tractament de les teues dades personals amb l’única finalitat de gestionar el teu vot en el Festival MUT!. Més informació a la nostra <a href="privacidad.html" target="_blank">Política de privacitat</a>.';
+    }
+  }
+
   traducirCabecera();
   traducirLoginModal();
+  traducirAvisoLegal();
 
   const loginForm = document.getElementById('login-form');
   const loginModal = document.getElementById('login-modal');
@@ -413,6 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lang', currentLang);
         traducirCabecera();
         traducirLoginModal();
+        traducirAvisoLegal();
 
         langButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');

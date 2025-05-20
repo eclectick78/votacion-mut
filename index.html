@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Festival MUT! - Votació 10 anys" />
   <meta name="twitter:description" content="Vota els teus 10 espectacles preferits de totes les edicions del MUT!" />
   <meta name="twitter:image" content="assets/og-image.jpg" />
-  
+
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -56,6 +56,7 @@
       <form id="login-form">
         <label for="login-email">Email:</label><br>
         <input type="email" id="login-email" required><br><br>
+        <p class="form-legal-text" id="login-legal-text"></p>
         <button type="submit">Enviar enllaç</button>
       </form>
       <p id="login-message"></p>
@@ -74,6 +75,13 @@
       <div id="modal-controls" class="modal-controls"></div>
     </div>
   </div>
+  <footer class="site-footer">
+    <p>
+      <a href="privacidad.html" target="_blank">Política de privacidad</a> ·
+      <a href="cookies.html" target="_blank">Política de cookies</a> ·
+      <a href="legal.html" target="_blank">Aviso legal</a>
+    </p>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="main.js"></script>
 </body>
