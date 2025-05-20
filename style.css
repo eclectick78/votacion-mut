@@ -176,6 +176,11 @@ button:hover {
   position: relative;
 }
 
+#modal-synopsis {
+  max-width: 580px;
+  line-height: 1.5rem;
+}
+
 #modal-close {
   position: absolute;
   top: 0;
@@ -265,4 +270,26 @@ button:hover {
   color: #f00;
   font-weight: bold;
   cursor: pointer;
+}
+
+# Responsive styles for small screens
+@media (max-width: 600px) {
+  #card-container {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  .card {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem 1rem;
+  }
+
+  .card-button {
+    width: 100%;
+  }
 }
