@@ -589,7 +589,7 @@
     "titulo": "¡FUERA!",
     "compania": "Murmuyo",
     "thumbnail": "assets/thumbs/fuera.webp",
-    "video": "No tiene video",
+    "video": "https://youtu.be/qMQnj59YSVM",
     "sinopsis_es": "Reflexión sobre el desalojo y la solidaridad ante la pérdida del hogar. Teatro comprometido que llama a la acción colectiva.",
     "sinopsis_val": "Reflexió sobre el desnonament i la solidaritat davant la pèrdua de la llar. Teatre compromés que crida a l’acció col·lectiva."
   },
@@ -616,7 +616,7 @@
     "titulo": "Murmu-yo",
     "compania": "Murmuyo",
     "thumbnail": "assets/thumbs/murmuyo.webp",
-    "video": "No tiene video",
+    "video": "https://youtu.be/RrEojeZ_Bgw",
     "sinopsis_es": "Solo en la calle, Murmuyo improvisa con los transeúntes creando escenas inesperadas llenas de absurdo y complicidad.",
     "sinopsis_val": "Tot sol al carrer, Murmuyo improvisa amb els vianants creant escenes inesperades plenes d’absurd i complicitat."
   },
@@ -679,7 +679,7 @@
     "titulo": "Edén",
     "compania": "Théâthre Jaleo",
     "thumbnail": "assets/thumbs/eden.webp",
-    "video": "No tiene video",
+    "video": "https://vimeo.com/299176933",
     "sinopsis_es": "Un teatro ambulante presenta siete historias con títeres, máscaras y música. Un homenaje al arte cómico tradicional.",
     "sinopsis_val": "Un teatre ambulant presenta set històries amb titelles, màscares i música. Un homenatge a l’art còmic tradicional."
   },
@@ -769,7 +769,7 @@
     "titulo": "A fuego lento",
     "compania": "Bilbobasso",
     "thumbnail": "assets/thumbs/fuegolento.webp",
-    "video": "No tiene video",
+    "video": "https://youtu.be/uEec060kGjU",
     "sinopsis_es": "Amor, tango y fuego en una relación apasionada y explosiva. Un espectáculo de danza y pirotecnia cargado de emoción.",
     "sinopsis_val": "Amor, tango i foc en una relació apassionada i explosiva. Un espectacle de dansa i pirotècnia carregat d’emoció."
   },
