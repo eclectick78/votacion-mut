@@ -63,8 +63,8 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname.startsWith('127.');
 const redirectTo = isLocalhost
-  ? 'http://localhost:5500' // Asegúrate que el puerto coincida con tu servidor local de desarrollo
-  : 'https://eclectick78.github.io/votacion-mut/';
+  ? 'http://localhost:5500'
+  : 'https://festivalmut.com/vota/';
 
 console.log("Antes de crear cliente Supabase. window.supabase es:", window.supabase);
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -276,7 +276,7 @@ function renderCards(data, currentUser, votosInicialesDelUsuario) {
         obs.unobserve(img);
       }
     });
-  }, { rootMargin: '0px 0px 100px 0px', threshold: 0.1 });
+  }, { rootMargin: '0px 0px 140px 0px', threshold: 0.1 });
   lazyImages.forEach(img => observer.observe(img));
 }
 
