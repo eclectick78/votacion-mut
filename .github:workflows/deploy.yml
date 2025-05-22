@@ -1,0 +1,22 @@
+name: Deploy via SFTP
+
+on:
+  push:
+    branches:
+      - main  # O la rama que quieras desplegar
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy files to OVH via SFTP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: 22
+          source: "."
+          target: "/home/roblesx-votomut/www"  # La ruta real
