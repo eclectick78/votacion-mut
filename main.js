@@ -64,7 +64,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname.startsWith('127.');
 const redirectTo = isLocalhost
   ? 'http://localhost:5500'
-  : 'https://festivalmut.com/vota/';
+  : 'https://vota.festivalmut.com/';
 
 console.log("Antes de crear cliente Supabase. window.supabase es:", window.supabase);
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -320,7 +320,7 @@ function traducirUICompleta() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Cachear elementos del DOM
   cardContainer = document.getElementById('card-container');
   fichaModal = document.getElementById('modal');
@@ -344,6 +344,33 @@ document.addEventListener('DOMContentLoaded', () => {
   headerPElement = document.querySelector('header p');
   parallaxBgElement = document.querySelector('.parallax-bg');
   legalTextElement = document.getElementById('login-legal-text');
+
+  // --- Comprobación de sesión y renderizado inicial ---
+  const { data: { session } } = await client.auth.getSession();
+  user = session?.user || null;
+
+  if (user) {
+    let userVotes = [];
+    const { data: votosRecientes, error: errorVotos } = await client
+      .from('votos')
+      .select('espectaculo')
+      .eq('user_id', user.id);
+    if (errorVotos) console.error("Error fetching user votes on load:", errorVotos);
+    else userVotes = Array.isArray(votosRecientes) ? [...votosRecientes] : [];
+    votosGlobalesDelUsuario = userVotes;
+
+    try {
+      const res = await fetch('data/espectaculos.json');
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      renderCards(data, user, votosGlobalesDelUsuario);
+    } catch (fetchError) {
+      console.error("Error fetching espectaculos.json:", fetchError);
+      if(cardContainer) cardContainer.innerHTML = "<p>Error al cargar los espectáculos. Inténtalo de nuevo más tarde.</p>";
+    }
+  } else if (cardContainer) {
+    cardContainer.innerHTML = '';
+  }
 
   // Efecto Parallax
   if (parallaxBgElement) {
@@ -457,6 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (logoutBtn) {
           logoutBtn.addEventListener('click', async () => {
             await client.auth.signOut();
+            window.location.reload();
           });
         }
       } else {
