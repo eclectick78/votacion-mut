@@ -21,3 +21,5 @@ jobs:
           source: "."
           target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
           overwrite: true
+          debug: true
+          rm: true
