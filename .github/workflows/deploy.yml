@@ -20,7 +20,6 @@ jobs:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          protocol: sftp
           port: 22
           local-dir: ./ # O la subcarpeta si tienes un build, ej: ./dist/
           server-dir: /home/roblesx-votomut/
