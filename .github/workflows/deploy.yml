@@ -15,14 +15,13 @@ jobs:
         run: ls -laR # Lista recursivamente para ver contenido de assets y data también
 
       - name: Deploy files to OVH via SFTP
-        uses: appleboy/scp-action@v0.1.7
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.SFTP_HOST }}
+          server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
+          protocol: sftp
           port: 22
-          source: "index.html"
-          target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
-          overwrite: true
-          debug: true
-          rm: false
+          local-dir: ./ # O la subcarpeta si tienes un build, ej: ./dist/
+          server-dir: /home/roblesx-votomut/
+          log-level: verbose
