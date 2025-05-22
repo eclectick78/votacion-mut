@@ -19,4 +19,4 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
           source: "."
-          target: "/home/roblesx-votomut/www"  # Cambia esta ruta si tu OVH tiene otra ruta web
+          target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
