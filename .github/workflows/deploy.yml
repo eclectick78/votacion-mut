@@ -18,8 +18,8 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          source: "."
+          source: "index.html,main.js,style.css,privacidad.html,cookies.html,legal.html,admin.html,admin.js,assets,data"
           target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
           overwrite: true
           debug: true
-          rm: true
+          rm: false
