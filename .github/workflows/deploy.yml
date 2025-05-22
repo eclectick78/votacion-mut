@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: List files in workspace
+        run: ls -laR # Lista recursivamente para ver contenido de assets y data también
+
       - name: Deploy files to OVH via SFTP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -18,7 +21,7 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          source: "index.html,main.js,style.css,privacidad.html,cookies.html,legal.html,admin.html,admin.js,assets,data"
+          source: "index.html"
           target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
           overwrite: true
           debug: true
