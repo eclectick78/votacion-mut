@@ -20,3 +20,4 @@ jobs:
           port: 22
           source: "."
           target: "/home/roblesx-votomut"  # Cambia esta ruta si tu OVH tiene otra ruta web
+          overwrite: true
