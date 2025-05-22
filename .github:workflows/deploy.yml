@@ -14,9 +14,9 @@ jobs:
       - name: Deploy files to OVH via SFTP
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.ssh.cluster031.hosting.ovh.net }}
-          username: ${{ secrets.roblesx-votomut }}
-          password: ${{ secrets.mihMfNZZpXj0IzxCOZphYZW }}
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
           source: "."
-          target: "/home/roblesx-votomut/www"  # La ruta real
+          target: "/home/roblesx-votomut/www"  # Cambia esta ruta si tu OVH tiene otra ruta web
